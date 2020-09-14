@@ -1,0 +1,18 @@
+{
+  "name": "shipafreight-test-idp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "jose": "^1.28.0"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon",
+    "start": "NODE_ENV=production node index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
