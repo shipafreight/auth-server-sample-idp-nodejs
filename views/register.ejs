@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SF Auth Server Test IdP | Register</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <style>
+    html, body {
+      height: 100vh;
+    }
+
+    .container {
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    input {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      width: 20rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><%= title %></h1>
+    <a href="/auth?client_id=<%= clientId %>&response_type=<%= responseType %>&redirect_uri=<%= redirectUri %>">Login</a>
+    <br>
+
+    <form action="/auth?client_id=<%= clientId %>&response_type=<%= responseType %>&redirect_uri=<%= redirectUri %>" method="POST">
+      <input required type="email" name="email" placeholder="Enter your email">
+      <br>
+      <input required type="text" name="firstName" placeholder="Enter your first name">
+      <br>
+      <input required type="text" name="lastName" placeholder="Enter your last name">
+      <br>
+      <input required type="password" name="password" placeholder="Enter your password" disabled>
+      <br>
+      <br>
+      <input type="submit" value="Register">
+    </form>
+
+    <form action="/auth/abort?client_id=<%= clientId %>&response_type=<%= responseType %>&redirect_uri=<%= redirectUri %>" method="POST">
+      <input type="submit" value="Cancel">
+    </form>
+  </div>
+</body>
+</html>
