@@ -16,7 +16,9 @@ const ENCRYPTION_KEY = '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOC
 
 const CLIENT_ID = '4788d283-835d-4b57-8599-20d886d3d806'
 const VALID_REDIRECT_URIS = [
-  'http://localhost:3010/auth/'
+  'http://localhost:3010/auth/',
+  'https://auth-staging.shipafreightservices.com/auth/',
+  'https://auth.shipafreight.com/auth/',
 ]
 
 const signAndEncrypt = (payload) => {
