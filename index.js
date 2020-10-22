@@ -4,7 +4,6 @@ const express = require('express')
 const jose = require('jose');
 const path = require('path');
 
-
 if (process.env.NODE_ENV === 'development') {
   dotenv.config()
 }
