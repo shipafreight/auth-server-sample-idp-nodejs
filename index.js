@@ -88,9 +88,9 @@ app.get('/auth/register', (req, res, next) => {
 app.get('/auth/decode-token', (req, res, next) => {
   return res.render('decode-token', {
     title: 'Decode ID Token',
-    payload: null,
-    encryptedToken: null,
-    signingPublicKey: null,
+    payload: '',
+    encryptedToken: '',
+    signingPublicKey: '',
   })
 })
 
@@ -104,6 +104,7 @@ app.post('/auth/decode-token', (req, res, next) => {
     const decryptedToken = jose.JWE.decrypt(encryptedToken, process.env.ENC_PRIVATE_KEY).toString()
     payload = jose.JWS.verify(decryptedToken, signingPublicKey)
   } catch (err) {
+    console.error(err)
     payload = 'Failed to decode the token'
   }
 
