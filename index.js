@@ -84,7 +84,7 @@ app.get('/auth/register', (req, res, next) => {
 })
 
 /**
- * render page to verifying token
+ * render decode id token page
  */
 app.get('/auth/decode-token', (req, res, next) => {
   return res.render('decode-token', {
@@ -95,9 +95,6 @@ app.get('/auth/decode-token', (req, res, next) => {
   })
 })
 
-/**
- * render page to verifying token
- */
 app.post('/auth/decode-token', (req, res, next) => {
   const encryptedToken = req.body.id_token
   const signingPublicKey = req.body.sign_public_key
