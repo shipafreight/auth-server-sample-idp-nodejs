@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SF Auth Server | Playground</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <style>
+    html, body {
+      height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+    }
+
+    .container {
+      margin: 0;
+      padding: 2rem;
+
+      height: 100%;
+      min-width: 100%;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .playground {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .input {
+      margin-right: 2rem;
+    }
+
+    .field {
+      display: flex;
+      margin-bottom: 1rem;
+      flex-direction: column;
+    }
+
+    .field:last-of-type {
+      margin-bottom: 2rem;
+    }
+
+    .field .label {
+      margin-bottom: 1rem;
+    }
+
+    textarea {
+      padding: 1rem;
+    }
+
+    code {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><%= title %></h1>
+
+    <div class="playground">
+      <div class="input">
+        <form action="/auth/decode-token" method="POST">
+          <div class="field">
+            <span class="label">Encrypted ID Token</span>
+            <textarea
+              required
+              rows="10"
+              cols="100"
+              name="id_token"
+              placeholder="Encrypted ID Token"><% if (encryptedToken) { %><%= encryptedToken %><% } %></textarea>
+          </div>
+    
+          <div class="field">
+            <span class="label">Signing Public Key</span>
+            <textarea
+              required
+              rows="10"
+              cols="100"
+              name="sign_public_key"
+              placeholder="Signing Public Key"><% if (signingPublicKey) { %><%= signingPublicKey %><% } %></textarea>
+          </div>
+    
+          <input type="submit" value="Decode">
+        </form>
+      </div>
+  
+      <div class="output">
+        <% if (typeof payload === 'object') { %>
+          <code class="payload"><%= JSON.stringify(payload, null, 2) %></code>
+        <% } else { %>
+          <span><%= payload %></span>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

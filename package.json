@@ -13,6 +13,7 @@
     "start": "NODE_ENV=production node index.js"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "dotenv": "8.2.0",
+    "nodemon": "2.0.4"
   }
 }
