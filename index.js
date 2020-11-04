@@ -14,6 +14,7 @@ app.use(express.urlencoded())
 app.set('view engine', 'ejs')
 app.set('views', path.resolve(__dirname, 'views'))
 
+const ISSUER = 'https://auth-server-test-idp.herokuapp.com';
 const CLIENT_ID = '4788d283-835d-4b57-8599-20d886d3d806'
 const VALID_REDIRECT_URIS = [
   'http://localhost:3010/auth/',
@@ -124,12 +125,17 @@ app.post('/auth', (req, res, next) => {
   validateRequestParams(req)
 
   // perform login / registration
-
+  const iat = parseInt((+new Date)/1000);
   const idTokenPayload = {
     email: req.body.email, // required
     firstName: req.body.firstName || 'Hamza', // optional
     lastName: req.body.lastName || 'Purra', // optional
     companyName: req.body.companyName || 'Hello World',
+    iat,
+    sub: req.body.email,
+    iss: ISSUER,
+    aud: CLIENT_ID,
+    exp: iat + 1000,
     // countryCode: CountryCode, // optional
     // phoneNumber: '+55 11 96413-2640' // optional
   }
